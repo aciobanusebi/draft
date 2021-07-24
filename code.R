@@ -141,7 +141,8 @@ for(overSample in overSamples) {
   file <- file.path(DIR_DATA_ORIGINAL,overSampleJustName, paste0(overSample,".fastq.gz"))
   fileCounterpart <- file.path(DIR_DATA_ORIGINAL,overSampleJustName, paste0(overSampleCounterpart,".fastq.gz"))
   if(!dir.exists(file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName))) {
-    dir.create(file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName))
+    dir.create(file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName),
+               recursive = T)
   }
   fileOut <- file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName, paste0(overSample,".fastq.gz"))
   fileCounterpartOut <- file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName, paste0(overSampleCounterpart,".fastq.gz"))
