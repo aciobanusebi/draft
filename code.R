@@ -129,6 +129,11 @@ DIR_FQC <- "/mnt/scratch/sebastian.ciobanu/data-processed/fqc" #"E:/june-july-20
 DIR_DATA_ORIGINAL <- "~/data3/data-original/ena_files"
 DIR_DATA_PROCESSED_FINAL <- "/mnt/scratch/sebastian.ciobanu/data-processed-mini1/ena_files"
 
+if(!dir.exists(DIR_DATA_PROCESSED_FINAL)) {
+  dir.create(DIR_DATA_PROCESSED_FINAL,
+             recursive = T)
+}
+
 overSamples <- getOverSamples(file.path(DIR_MULTIQC,"multiqc_data.json"))
 
 for(overSample in overSamples) {
@@ -141,8 +146,7 @@ for(overSample in overSamples) {
   file <- file.path(DIR_DATA_ORIGINAL,overSampleJustName, paste0(overSample,".fastq.gz"))
   fileCounterpart <- file.path(DIR_DATA_ORIGINAL,overSampleJustName, paste0(overSampleCounterpart,".fastq.gz"))
   if(!dir.exists(file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName))) {
-    dir.create(file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName),
-               recursive = T)
+    dir.create(file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName))
   }
   fileOut <- file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName, paste0(overSample,".fastq.gz"))
   fileCounterpartOut <- file.path(DIR_DATA_PROCESSED_FINAL,overSampleJustName, paste0(overSampleCounterpart,".fastq.gz"))
